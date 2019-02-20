@@ -36,26 +36,35 @@ boys_names_2018 <- matrix(c(1:10,
   as.data.frame(stringsAsFactors = F)
 colnames(boys_names_2018) <- c("Place","Name","Frequency")
 
-#TODO: girls
-# Julia	797	1
-# Emma	704	2
-# Sophie	677	3
-# Tess	669	4
-# Zoë	659	5
-# Mila	632	6
-# Anna	550	7
-# Sara	541	8
-# Eva	530	9
-# Noor	516	10
+girls_names_2018 <- matrix(c(1:20, 
+                            c("Julia","Emma","Sophie","Tess","Zoë","Mila","Anna","Sara","Eva","Noor",
+                              "Nora","Evi","Saar","Lotte","Lieke","Yara","Olivia","Liv","Lauren","Nova"), 
+                            c(797,704,677,669,659,632,550,541,530,516,516,513,500,478,463,462,461,444,439,412)),20,3) %>% 
+  as.data.frame(stringsAsFactors = F)
+colnames(girls_names_2018) <- c("Place","Name","Frequency")
 
 li_boys_names <- character()
-for (i in 1:nrow(boys_names_2018)){
-  li_boys_names <- append(li_boys_names, rep(boys_names_2018$Name[i], boys_names_2018$Frequency[i]))
+li_girls_names <- character()
+for (list in c(li_boys_names, li_girls_names)) {
+  paste0(gsub(pattern = "li_", "", deparse(substitute(li_boys_names))),"_2018")
+  get(paste0(gsub(pattern = "li_", "", deparse(substitute(li_boys_names))),"_2018"))$Name[1]
+  deparse(substitute(lijst[1]))
+  for (i in 1:nrow(boys_names_2018)){
+    list <- append(list, rep(boys_names_2018$Name[i], boys_names_2018$Frequency[i]))
+  }  
 }
+
 df_boys <- li_boys_names %>%
   sample(., length(.)) %>%
   as.data.frame()
 freqtbl_boys <- table(df_boys)
 
-
+wordcloud(words = names(freqtbl_boys), 
+          freq = freqtbl_boys, 
+          #scale = c(4,.1), 
+          random.order = T, 
+          random.color = F, 
+          rot.per = 0.1, 
+          colors = brewer.pal(8, "Dark2"), 
+          use.r.layout = T)
 
