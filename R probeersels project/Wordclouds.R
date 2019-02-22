@@ -31,8 +31,9 @@ CreateWordcloud(words_input = dtm_trump$word, freq_input = dtm_trump$freq)
 # #Most common Dutch boys and girls names
 #As an example, first create an arbitrary data frame (column) with unarranged levels/factors
 boys_names_2018 <- matrix(c(1:10, 
-                            c("Lucas","Levi","Finn","Sem","Noah","Daan","Luuk","Bram","Mees","Milan"), 
-                            c(681,641,634,633,624,619,596,571,568,558)),10,3) %>% 
+                            c("Lucas","Levi","Finn","Sem","Noah","Daan","Luuk","Bram","Mees","Milan",
+                              "Liam","James","Jesse","Thomas","Noud","Sam","Adam","Benjamin","Max","Lars"), 
+                            c(681,641,634,633,624,619,596,571,568,558,532,529,511,499,483,471,442,431,430,414)),20,3) %>% 
   as.data.frame(stringsAsFactors = F)
 colnames(boys_names_2018) <- c("Place","Name","Frequency")
 
